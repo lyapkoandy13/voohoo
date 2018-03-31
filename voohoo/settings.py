@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'qfktf%kom+6)@@9dc#jxq*^wk5vx+)-98bdn3zbm6e&9d+r45u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -120,3 +121,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'public_assets')
+
+STATIC_DIRS = 'static'
+
+STATICFILES_DIRS = [
+    STATIC_DIRS,
+]
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Email settings
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'robot@aits.ua'
+EMAIL_HOST_PASSWORD = '37Rh!_09=S/U'
+EMAIL_PORT = 587
+
+ADMINS = [('Andy','lyapkoandy13@gmail.com'), ('Sergiy', 'director@aits.ua')]
