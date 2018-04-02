@@ -72,7 +72,7 @@ body {
    color: #777;
     background-color: #f8f8f8;
     border-color: #e7e7e7;
-    box-shadow: inset -1px 0 0 #e7e7e7;;
+    box-shadow: inset -1px -1px 0 #e7e7e7;;
 }
 
 .navbar .form-control {
@@ -82,6 +82,58 @@ body {
 /*
  * Utilities
  */
+
+.navbar .fa{
+    color: rgba(0,0,0,.5);
+}
+.navbar .fa:hover{
+    color: rgba(0,0,0,.7);
+}
+.sidebar i, .sidebar svg{
+    margin-right:15px!important;
+}
+.sidebar{
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.sidebar.in{
+    transform: translateX(-15em);
+}
+/*.sidebar.in{*/
+    /*width:3.2em;*/
+/*}*/
+/*.sidebar.in span{*/
+    /*display: none;*/
+/*}*/
+
+.arrow-collapse{
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.arrow-collapse.in{
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.sidebar{
+    /*width:12em;*/
+
+}
+
+main{
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }

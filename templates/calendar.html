@@ -1,0 +1,27 @@
+{% extends 'o_layout.html' %}
+{% block custom_links %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css
+">
+{% endblock %}
+
+{% block main %}
+    <main role="main" class="col-md-10  ml-sm-auto pt-3 px-4">
+
+        <div class="ml-auto" id="calendar"></div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js
+"></script>
+    <script type="text/javascript">
+        $('.fa-calendar').parent().addClass('active');
+        $('#calendar').fullCalendar({
+             dayClick: function() {
+                alert('a day has been clicked!');
+            }
+          });
+
+    </script>
+{% endblock %}
