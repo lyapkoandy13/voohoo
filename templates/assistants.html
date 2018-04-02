@@ -1,0 +1,76 @@
+{% extends 'o_layout.html' %}
+{% load staticfiles %}
+
+{% block custom_links %}
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+{% endblock %}
+
+{% block main %}
+    <main class="col-md-10 ml-auto">
+        <div class="container-fluid">
+        <h3 class="m-4">Список асистентів</h3>
+        <table class="table table-hover some--table">
+            <thead>
+                <th>НПА</th>
+                <th>Пароль</th>
+                <th>E-mail</th>
+                <th>Телефон</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>5413453</td>
+                  <td>somepassword1</td>
+                  <td>co@mdo.io</td>
+                    <td>123 456 789</td>
+                    <td><a href="#"><i class="fa fa-pencil"></i></a><a href="#"><i class="fa fa-ban"></i></a></td>
+                </tr>
+                <tr>
+                  <td>534h5i3h</td>
+                  <td>somepassword2</td>
+                  <td>i@am.com</td>
+                    <td>123 412 411</td>
+                    <td><a href="#"><i class="fa fa-pencil"></i></a><a href="#"><i class="fa fa-ban"></i></a></td>
+                </tr>
+                <tr>
+                  <td>s6f87adtf</td>
+                  <td>somepassword3</td>
+                  <td>g@oogle.com</td>
+                    <td>352 456 521</td>
+                    <td><a href="#"><i class="fa fa-pencil"></i></a><a href="#"><i class="fa fa-ban"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <!-- DataTables Plugin -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('.some--table').DataTable({
+
+                "language": {
+                    "lengthMenu": "Відобразити _MENU_ контактів на сторінці",
+                    "zeroRecords": "Вибачте, нічого не знайдено",
+                    "info": "Показана сторінка _PAGE_ з _PAGES_",
+                    "infoEmpty": "Немає записів",
+                    "infoFiltered": "(профільтровано з _MAX_ записів)",
+                    "search": "Пошук:",
+                    "paginate": {
+                        "first": "Перша",
+                        "last": "Остання",
+                        "next": "Наступна",
+                        "previous": "Минула"
+                    },
+                },
+                "paging":false,
+            });
+            $('.fa-cog').parent().addClass('active');
+        });
+    </script>
+
+{% endblock %}

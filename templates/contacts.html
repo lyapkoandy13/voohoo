@@ -1,17 +1,23 @@
 {% extends "o_layout.html" %}
 
+{% block custom_links %}
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+{% endblock %}
+
 {% block main %}
     <main role="main" class="col-md-10  ml-sm-auto pt-3 px-4">
-            <h2>Список контактів</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm some--table">
+            <h3 class="m-2">Список контактів</h3>
+          <div class="table-responsive mb-5">
+              <table class="table table-hover some--table">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>НПА</th>
+                  <th>Ім'я</th>
+                  <th>Прізвіще</th>
+                  <th>Телефон</th>
+                  <th>Тип</th>
+                    <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -21,14 +27,14 @@
                   <td>ipsum</td>
                   <td>dolor</td>
                   <td>sit</td>
-                </tr>
+                 </tr>
                 <tr>
                   <td>1,002</td>
                   <td>amet</td>
                   <td>consectetur</td>
                   <td>adipiscing</td>
                   <td>elit</td>
-                </tr>
+                 </tr>
                 <tr>
                   <td>1,003</td>
                   <td>Integer</td>
@@ -128,6 +134,11 @@
                   <td>libero</td>
                 </tr>
               </tbody>
+                  <tfoot>
+                  <tr class="some--filters">
+              </tr>
+
+                  </tfoot>
             </table>
           </div>
         </main>
@@ -135,7 +146,61 @@
 
 {% endblock %}
 {% block scripts %}
+    <!-- DataTables Plugin -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script>
-    $('.fa-users').parent().addClass('active');
+        $(document).ready( function () {
+           $('.some--table tbody tr').each(function () {
+              $(this).append('<td><a href="#"><i class="fa fa-phone"></i></a><a href="#"><i class="fa fa-pencil"></i></a><a href="#"><i class="fa fa-trash"></i></a></td>'
+                );
+           });
+
+            var table = $('.some--table').DataTable( {
+                "language": {
+                    "lengthMenu": "Відобразити _MENU_ контактів на сторінці",
+                    "zeroRecords": "Вибачте, нічого не знайдено",
+                    "info": "Показана сторінка _PAGE_ з _PAGES_",
+                    "infoEmpty": "Немає записів",
+                    "infoFiltered": "(профільтровано з _MAX_ записів)",
+                     "search":         "Пошук:",
+                    "paginate": {
+                        "first":      "Перша",
+                        "last":       "Остання",
+                        "next":       "Наступна",
+                        "previous":   "Минула"
+                    },
+                },
+                "paging":false,
+            } );
+
+            $('.fa-users').parent().addClass('active');
+
+
+
+            // Setup - add a text input to each footer cell
+            var i = 0;
+            $('.some--table thead tr th').each( function () {
+                var title = $(this).text();
+                if (title !== ''){
+                    $('.some--filters').append( '<td class="p-1 pt-2"><input class="form-control search--input search--'+i+'" style="margin-left:0.2em" type="text" placeholder="Пошук '+title+'" /></td>' );
+                    i++;
+                }
+            } );
+
+            // Apply the search
+            i = 0;
+            table.columns().every( function () {
+                var that = this;
+
+                $('.search--'+i).on( 'keyup change', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+                i++;
+            } );
+        });
     </script>
 {% endblock %}
